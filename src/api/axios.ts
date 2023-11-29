@@ -3,7 +3,7 @@ import { message } from 'ant-design-vue'
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 import Router from '@/router'
 axios.defaults.timeout = 25000
-axios.defaults.baseURL = "https://dc.boeart.cn/bd-datapoint/"
+axios.defaults.baseURL = "http://www.csgoods.cn:10031"
 
 
 const Axios: AxiosRequestTransformer = axios
@@ -69,7 +69,7 @@ function fetch(url: string, method: string, params: any, option: ParamOption = <
 
   const res = Axios(request).then((response: AxiosResponse) => {
     
-      return response.data
+      return response.data.data
   }).catch((e: any) => {
     let response: AxiosResponse<ErrorResponse> = e || {}
     const errorMsg: any = option.errorMsg || codeError(response.status, e.message) || response.data?.message || '未知错误'
